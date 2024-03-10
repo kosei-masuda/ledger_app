@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>記録</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    {% for item in record_list %}
+    <div class="alert alert-secondary" role="alert">
+
+        <p>収入: + {{ item.income }}</p>
+        <p>支出: - {{ item.expenses }}</p>
+        <p>合計: {{ item.total }}</p>
+    </div>
+    {% endfor %}
+
+    <a href="{% url 'ledger' %}">戻る</a>
+
+</div>
+{% else %}
+please login
+{% endif %}
+{% endblock content %}

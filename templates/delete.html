@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>留学生の家計簿アプリ(削除専用ページ)</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+<form method="POST">{% csrf_token %}
+<div class="alert alert-danger" role="alert">
+    本当に消去してもよろしいですか？<br>
+    内容:<p>{{ object.title }}&emsp;{{ object.memo}}</p>&emsp;
+    <p>+{{ object.income }}</br>-{{ object.expenses }}</p>
+</div>
+<input type="submit" value="消去する">
+</form>
+
+{% endblock content %}

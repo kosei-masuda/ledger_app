@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <p>項目:</title><input type="text" name="title"></p>
+    <p>収入:<input type="number" name="income"></p>
+    <p>支出:<input type="number" name="expenses"></p>
+    <p>日付:<input type="date" name="date"></p>
+    <p>メモ:<input type="text" name="memo"></p>
+    <p>
+    <p>収入<br>
+        <input type="checkbox" name="kind" value="給料">給料
+        <input type="checkbox" name="kind" value="おこづかい">おこづかい
+        <input type="checkbox" name="kind" value="副業">副業
+        <input type="checkbox" name="kind" value="投資">投資
+        <input type="checkbox" name="kind" value="その他">その他<br>
+        支出<br>
+        <input type="checkbox" name="kind" value="食費">食費
+        <input type="checkbox" name="kind" value="生活費">生活費
+        <input type="checkbox" name="kind" value="美容費">美容費
+        <input type="checkbox" name="kind" value="交際費">交際費
+        <input type="checkbox" name="kind" value="医療費">医療費
+        <input type="checkbox" name="kind" value="交通費">交通費
+        <input type="checkbox" name="kind" value="その他">その他
+    </p>
+    <input type="submit" value="create">
+</form>
+{% endblock content %}

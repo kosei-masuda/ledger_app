@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>詳細</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p>{{ object.date }}</p>
+        <p>{{ object.title }}&emsp;{{ object.memo}}</p>
+        <p>+{{ object.income }}</br>-{{ object.expenses }}</p>
+        <a href="{% url 'delete' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">削除</a>
+    </div>
+</div>
+{% else %}
+please login
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>留学生の家計簿アプリ</h3>&emsp;&emsp;<p>ログイン中のユーザー: {{ username }}</p>
+</div>
+{% endblock header %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    {% for item in object_list %}
+    <div class="alert alert-warning" role="alert">
+        <p>{{ item.date }}</p>
+        <p><a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
+        <p>+{{ item.income }}</br>-{{ item.expenses }}</p>
+    </div>
+    {% endfor %}
+    <p>収入:+{{ total_income }}&emsp;¥ + {{ total_in_target_currency_income }}</br>
+       支出:-{{ total_expenses }}&emsp;¥ - {{ total_in_target_currency_expenses }}</br>
+       合計:{{ total_balance }}&emsp;¥ {{ total_in_target_currency_balance }}
+    </p>
+    <a href="{% url 'add' %}">追加</a>&emsp;
+    <a href="{% url 'record' %}">記録</a>&emsp;
+    <a href="{% url 'logout' %}">ログアウト</a>
+    &emsp;&emsp;<a href="{% url 'new' %}"style="color: red;">記録してリセット</a>
+</div>
+{% else %}
+please login
+{% endif %}
+{% endblock content %}
